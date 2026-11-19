@@ -49,6 +49,11 @@ const cardsTemplate = document.querySelector("#cardTemplate").content.querySelec
 const cardsContainer = document.querySelector(".cards__list");
 const cardTitle = cardsTemplate.querySelector(".card__title");
 const cardImageUrl = cardsTemplate.querySelector(".card__image");
+//Image pop up
+const openImageModal = document.querySelector("#image-popup");
+const closeImageModalButton = openImageModal.querySelector(".popup__close");
+const imageCaptionPopup = openImageModal.querySelector(".popup__caption");
+const imageDisplayPopup = openImageModal.querySelector(".popup__image");
 // input profile
 let nameInput = editPopUpModal.querySelector(".popup__input_type_name");
 let jobInput = editPopUpModal.querySelector(".popup__input_type_description");
@@ -102,9 +107,23 @@ function getCardElement(name = "Sin título", link = "./images/placeholder.jpg")
     const cardElement = cardsTemplate.cloneNode(true);
     const cardTitle = cardElement.querySelector(".card__title");
     const cardImage = cardElement.querySelector(".card__image");
+    const cardLikeButton = cardElement.querySelector(".card__like-button");
+    const cardDeleteButton = cardElement.querySelector(".card__delete-button");
     cardImage.src = link;
     cardImage.alt = name;
-    cardTitle.textContent = name;         
+    cardTitle.textContent = name;        
+    cardLikeButton.addEventListener("click", () => {
+        cardLikeButton.classList.toggle("card__like-button_is-active");
+    });
+    cardDeleteButton.addEventListener("click", () => {
+        cardElement.remove();
+    });
+    cardImage.addEventListener("click", () => {
+        imageCaptionPopup.textContent = name;
+        imageDisplayPopup.src = link;
+        imageDisplayPopup.alt = name;
+        openModal(openImageModal);
+    });
     return cardElement;
 };
 
@@ -116,7 +135,6 @@ function renderCard(name, link, container){
 initialCards.forEach((card) => {
     renderCard(card.name, card.link, cardsContainer);
 });
-
 
 function fillCardForm(){
     cardNameInput.value = cardTitle.textContent;
@@ -138,6 +156,8 @@ function handleCardFormSubmit(evt) {
     evt.target.reset(); 
 };
 
+
+closeImageModalButton.addEventListener("click", () => closeModal(openImageModal));
 profileAddCardButton.addEventListener("click", handleAddCardModal);
 popupCardCloseButton.addEventListener("click", () => closeModal(addNewCardModal));
 cardFormElement.addEventListener('submit', handleCardFormSubmit);
