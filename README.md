@@ -4,26 +4,80 @@ https://gustavoskg.github.io/web_project_around_es/
 
 ## Welcome to the project Around the US, an interactive page where users can upload, delete and like photos.  
 
-Project description
+## Around The U.S. — Interactive Web Project
 
-This website is similar to social media sites like Instagram. It has a minimalistic design, so the most important visual element are the photos displayed. This websites implements java script functionalities that allows you to interact with input forms and modify your profile information. 
+Around The U.S. is an interactive web application that allows users to handle cards from turistic places, profile editing and display images. The project is built with HTML5, CSS3 and JavaScript, implementing good structure practices, DOM manipulation and events.
 
-What else will you find here?
-A photo section that will display uploaded pictures and the possibility to like and delte them.
+## Project Description
 
-Technical characteristics
--Implementation of DOM to interact between HTML and CSS in real time through Java Script
--Input information through Java Script
--Modals to pop up new windows when required and hide them once they are not needed.
+Imagine a digital space where you can explore iconic landscapes, edit your profile and add new places to your collection, all within a minimal visual experience, clear and adaptable to any device. This project not only functions as a card galley, also as a practical demonstration of DOM manipulation, templates implementation and events.
 
-How it was made?
--A pre-coded layout was previously established, with an HTML structure and CSS styles
--New Java Script file created in order to be linked with HTML
--New array with initial cards name and link information, and display those in the console.
--Modal created to pop up a new window and edit the profile information
+## What You'll Find Here
 
+-Editable profile: An edit button opens a modal that allows changing the user's name and description     ("Explorer").
 
-# Technologies 
-HTML
-CSS
-Java Script
+-Card gallery: Six initial cards (initialCards) rendered dynamically from JavaScript, each with an image, title, "like" button, and delete button.
+
+-New place: An "Add card" button opens a modal with a form to create new cards with a title and image link.
+
+-Image modal: Clicking any image opens a popup with the enlarged image and its title as a caption.
+
+-Like button: Toggles the visual state via the card__like-button_is-active class.
+
+-Delete card: Each card can be individually removed from the DOM.
+
+-HTML templates: Uses <template id="cardTemplate"> to efficiently clone the card structure.
+
+## Technical Features
+
+-JavaScript organized by functionality (profile, cards, image)
+
+-DOM manipulation with querySelector, cloneNode, prepend, remove.
+
+-Event handling with addEventListener for clicks and form submissions.
+
+-Template cloning to avoid duplicating HTML for cards.
+
+-Reusable modals via openModal() and closeModal() functions.
+
+-Controlled forms with preventDefault() and reset() after submission.
+
+-Section-based organization: variables grouped by block (profile, cards, image) for readability and maintainability.
+
+## How It Was Built
+
+Prebuilt base structure in HTML with a header, a main containing the profile and cards, a footer, and three popups (edit profile, new place, image).
+
+Defined a <template> for cards, with image, title, and action buttons.
+
+Declared the initialCards array with six places and their image URLs.
+
+Selected the necessary DOM elements using querySelector.
+
+Implemented openModal() and closeModal() functions to handle popup visibility.
+
+Implemented the profile edit flow: open modal → fill form with current data → save changes → close modal.
+
+Implemented the card creation flow: clone template → set src, alt, and textContent → add listeners → insert with prepend.
+
+Added listeners for like, delete, and open enlarged image.
+
+Connected the main buttons (edit profile, add card) and each modal's close buttons.
+
+Initialized the gallery by iterating over initialCards with forEach and calling renderCard().
+
+## Main Technologies
+
+HTML5
+
+CSS3 (pages/index.css file)
+
+JavaScript (ES6+)
+
+DOM API (querySelector, template, cloneNode, prepend, remove)
+
+Events and forms (addEventListener, preventDefault, reset)
+
+## Why This Project Is Different
+
+Although it's a simple gallery, Around The U.S. is built with clear, modular logic: each code block is dedicated to a specific functionality (profile, cards, image), making it easy to read and extend. It also uses HTML templates, which avoids duplicating structure and improves performance, and employs reusable modals that can scale to new features. It's an excellent starting point for more complex projects requiring data persistence, API integration, or modern frameworks
